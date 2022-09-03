@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from tkinter import CASCADE
 from django.db import models
 from datetime import date
@@ -20,13 +21,14 @@ class Author(models.Model):
 
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
+
     def __str__(self) -> str:
         return f"Author: {self.first_name} {self.last_name} Email: {self.email}"
 
 
 class Post(models.Model):
     title = models.CharField(max_length=50)
-    image_name = models.CharField(max_length=50)
+    image = models.ImageField(upload_to="posts", null=True)
     date = models.DateField(auto_now=True, auto_now_add=False)
     slug = models.SlugField(unique=True, null=False)
     excerpt = models.TextField(blank=True, default="")
@@ -40,3 +42,11 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse("post-detail-page", args=[self.slug])
+
+
+class Comment(models.Model):
+    user_name = models.CharField(max_length=120)
+    user_email = models.EmailField()
+    text = models.TextField(max_length=400)
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE, related_name="comments")
