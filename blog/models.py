@@ -1,5 +1,4 @@
 from distutils.command.upload import upload
-from tkinter import CASCADE
 from django.db import models
 from datetime import date
 from django.urls import reverse
