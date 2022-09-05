@@ -1,4 +1,4 @@
 # Personal Blog
 
-#####
-<img src="https://github.com/OmarKhaledm21/Book-Listing-App-Android-Native-Java-/blob/master/SS/main_screen_input.png" alt="drawing" width="320"/>
+##### Landing page
+<img src="https://github.com/OmarKhaledm21/Blog-Project-Python-Django-/blob/main/SS/Index_page.png" alt="drawing" width="320"/>
